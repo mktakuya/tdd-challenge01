@@ -51,4 +51,28 @@ describe Stack do
       end
     end
   end
+
+  describe '#push' do
+    let(:stack) { Stack.new }
+
+    it "戻り値として@listを返すこと" do
+      expect(stack.push('dummy')).to eq stack.send(:instance_variable_get, :@list)
+    end
+
+    context "引数が1つのとき" do
+      it "@listの要素数が1増えること" do
+        expect {
+          stack.push('dummy')
+        }.to change { stack.send(:instance_variable_get, :@list).size }.by(1)
+      end
+    end
+
+    context "引数が2つのとき" do
+      it "@listの要素数が2増えること" do
+        expect {
+          stack.push('dummy', 'dummmy')
+        }.to change { stack.send(:instance_variable_get, :@list).size }.by(2)
+      end
+    end
+  end
 end

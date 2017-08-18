@@ -12,4 +12,10 @@ class Stack
   def empty?
     size == 0
   end
+
+  def push(*args)
+    @list.push(*args)
+
+    @list
+  end
 end
