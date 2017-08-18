@@ -14,7 +14,7 @@ describe Stack do
     let(:stack) { Stack.new }
 
     it "戻り値として0以上の整数を返すこと" do
-      is_expected.to  be_kind_of Integer
+      is_expected.to be_kind_of Integer
     end
 
     context "要素がないとき" do
@@ -25,7 +25,7 @@ describe Stack do
 
     context "要素が1つあるとき" do
       before do
-        stack.send(:instance_variable_get, :@list).send(:push, 'dummy')
+        stack.instance_variable_get(:@list).push('dummy')
       end
 
       it "1を返すこと" do
@@ -46,7 +46,7 @@ describe Stack do
 
     context '#sizeが1以上のとき' do
       it 'falseを返すこと' do
-        stack.send(:instance_variable_get, :@list).send(:push, 'dummy')
+        stack.instance_variable_get(:@list).push('dummy')
         is_expected.to be_falsy
       end
     end
@@ -56,14 +56,14 @@ describe Stack do
     let(:stack) { Stack.new }
 
     it "戻り値として@listを返すこと" do
-      expect(stack.push('dummy')).to eq stack.send(:instance_variable_get, :@list)
+      expect(stack.push('dummy')).to eq stack.instance_variable_get(:@list)
     end
 
     context "引数が1つのとき" do
       it "@listの要素数が1増えること" do
         expect {
           stack.push('dummy')
-        }.to change { stack.send(:instance_variable_get, :@list).size }.by(1)
+        }.to change { stack.instance_variable_get(:@list).size }.by(1)
       end
     end
 
@@ -71,7 +71,7 @@ describe Stack do
       it "@listの要素数が2増えること" do
         expect {
           stack.push('dummy', 'dummmy')
-        }.to change { stack.send(:instance_variable_get, :@list).size }.by(2)
+        }.to change { stack.instance_variable_get(:@list).size }.by(2)
       end
     end
   end
@@ -86,8 +86,7 @@ describe Stack do
 
     it '@listの最後の要素が無くなること' do
       stack.pop
-      expect(stack.send(:instance_variable_get, :@list)).to eq ['dummy', 'dummmy']
+      expect(stack.instance_variable_get(:@list)).to eq ['dummy', 'dummmy']
     end
-
   end
 end
