@@ -33,4 +33,22 @@ describe Stack do
       end
     end
   end
+
+  describe '#empty?' do
+    let(:stack) { Stack.new }
+    subject { stack.empty? }
+
+    context '#sizeが0のとき' do
+      it 'trueを返すこと' do
+        is_expected.to be_truthy
+      end
+    end
+
+    context '#sizeが1以上のとき' do
+      it 'falseを返すこと' do
+        stack.send(:instance_variable_get, :@list).send(:push, 'dummy')
+        is_expected.to be_falsy
+      end
+    end
+  end
 end

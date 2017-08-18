@@ -8,4 +8,8 @@ class Stack
   def size
     @list.size
   end
+
+  def empty?
+    size == 0
+  end
 end
