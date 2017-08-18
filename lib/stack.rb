@@ -18,4 +18,8 @@ class Stack
 
     @list
   end
+
+  def pop
+    @list.delete_at(-1)
+  end
 end

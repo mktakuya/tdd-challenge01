@@ -75,4 +75,19 @@ describe Stack do
       end
     end
   end
+
+  describe '#pop' do
+    let(:stack) { Stack.new }
+    before { stack.push('dummy', 'dummmy', 'dummmmy') }
+
+    it '@listの最後の要素を返すこと' do
+      expect(stack.pop).to eq 'dummmmy'
+    end
+
+    it '@listの最後の要素が無くなること' do
+      stack.pop
+      expect(stack.send(:instance_variable_get, :@list)).to eq ['dummy', 'dummmy']
+    end
+
+  end
 end
